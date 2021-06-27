@@ -3,8 +3,11 @@ package com.hendisantika.springredismysql.service;
 import com.hendisantika.springredismysql.entity.Country;
 import com.hendisantika.springredismysql.repository.CountryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,5 +33,11 @@ public class CountryService {
     @Cacheable(value = REDIS_CACHE_VALUE, key = "#id")
     public Country findById(Integer id) {
         return countryRepository.findFirstById(id);
+    }
+
+    @CacheEvict(value = REDIS_CACHE_VALUE, key = "#id")
+    public List<Country> delete(Integer id) {
+        countryRepository.deleteById(id);
+        return countryRepository.findAll();
     }
 }
