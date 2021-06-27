@@ -46,4 +46,9 @@ public class CountryController {
     public ResponseEntity<Country> findById(@RequestParam Integer id) throws RuntimeException {
         return new ResponseEntity<>(countryService.findById(id), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/deleteById")
+    public ResponseEntity<List<Country>> deleteById(@RequestParam Integer id) throws RuntimeException {
+        return new ResponseEntity<>(countryService.delete(id), HttpStatus.OK);
+    }
 }
