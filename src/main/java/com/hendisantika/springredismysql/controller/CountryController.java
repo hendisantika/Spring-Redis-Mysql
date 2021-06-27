@@ -6,10 +6,14 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,15 +25,25 @@ import org.springframework.web.bind.annotation.RestController;
  * Time: 15.05
  */
 @RestController
-@RequestMapping("/country")
+@RequestMapping("/countries")
 @Api(tags = {"CountryController"})
 @RequiredArgsConstructor
 public class CountryController {
 
     private CountryService countryService;
 
-    @PostMapping(value = "/save")
+    @PostMapping
     public ResponseEntity<Country> save(@RequestBody Country request) throws RuntimeException {
         return new ResponseEntity<>(countryService.save(request), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Country>> findAllCountries() throws RuntimeException {
+        return new ResponseEntity<>(countryService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/findById")
+    public ResponseEntity<Country> findById(@RequestParam Integer id) throws RuntimeException {
+        return new ResponseEntity<>(countryService.findById(id), HttpStatus.OK);
     }
 }
