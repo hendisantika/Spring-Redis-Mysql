@@ -31,6 +31,10 @@ public class CountryService {
         return countryRepository.save(country);
     }
 
+    public List<Country> findAll() {
+        return countryRepository.findAll();
+    }
+
     @Cacheable(value = REDIS_CACHE_VALUE, key = "#id")
     public Country findById(Integer id) {
         return countryRepository.findFirstById(id);
