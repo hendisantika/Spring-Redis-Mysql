@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    #    url: jdbc:mysql://192.168.0.101:3406/blog
+    url: jdbc:mysql://localhost:3306/countries?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: none
+        naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: true
+    database: mysql
+  cache:
+    type: redis
+    cache-names: country
+    redis:
+      time-to-live: 60000
+  redis:
+    host: 192.168.0.101
+    port: 6379
+
+# HTTP Server
+server:
+  port: 8080
+  servlet:
+    context-path: /country-service
+
+management:
+  security:
+    enabled: false
+
