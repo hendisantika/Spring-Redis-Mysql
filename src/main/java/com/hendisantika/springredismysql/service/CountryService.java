@@ -26,4 +26,9 @@ public class CountryService {
     public Country save(Country country) {
         return countryRepository.save(country);
     }
+
+    @Cacheable(value = REDIS_CACHE_VALUE, key = "#id")
+    public Country findById(Integer id) {
+        return countryRepository.findFirstById(id);
+    }
 }
