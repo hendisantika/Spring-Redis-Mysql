@@ -27,7 +27,7 @@ dependencies {
     implementation 'org.hibernate:hibernate-c3p0:6.6.0.Final'
     runtimeOnly 'mysql:mysql-connector-java'
 
-    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
