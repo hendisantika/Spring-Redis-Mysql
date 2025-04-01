@@ -24,7 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.hibernate:hibernate-c3p0:6.6.11.Final'
+    implementation 'org.hibernate:hibernate-c3p0:6.6.12.Final'
     runtimeOnly 'mysql:mysql-connector-java'
 
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
