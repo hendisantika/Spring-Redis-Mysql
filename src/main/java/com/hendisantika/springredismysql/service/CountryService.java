@@ -24,7 +24,7 @@ import java.util.List;
 public class CountryService {
     private static final String REDIS_CACHE_VALUE = "country";
 
-    private CountryRepository countryRepository;
+    private final CountryRepository countryRepository;
 
     @CachePut(value = REDIS_CACHE_VALUE, key = "#country.id")
     public Country save(Country country) {

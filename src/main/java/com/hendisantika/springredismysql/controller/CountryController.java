@@ -30,7 +30,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CountryController {
 
-    private CountryService countryService;
+    private final CountryService countryService;
 
     @PostMapping
     public ResponseEntity<Country> save(@RequestBody Country request) throws RuntimeException {
